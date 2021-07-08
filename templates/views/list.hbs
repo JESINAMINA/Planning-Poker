@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Purchase Orders</title>
+    <link rel="icon" href="/img/burger.png">
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/table.css">
+
+  <script src="lib/jquery-latest.min.js"></script>
+<script src="lib/jquery.tablesort.js"></script>
+<script src="lib/script.js"></script>
+<script src="lib/pagination.js"></script>
+<script src="lib/autocomplete.js"></script>
+    </head>
+     <body background="/img/Burger.jpg">
+    <div class="main-content">
+        {{>header}}
+        <form id="findform" action="/list" role="form" method="post">
+            <label for="filter">Sales person :</label>
+            <input list = "names" type="text" name="salesPerson" placeholder="name">
+             <datalist id="names">
+
+              </datalist>
+            <input type="submit" value= "Go" name="something"><br><br>
+        </form>
+
+        {{#if list.length}}
+
+        <table id="keywords">
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Sales person</th>
+                    <th>Creation date</th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Total net value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each list}}
+                <tr align="center">
+                    <td>{{this._id}}</td>
+                    <td>{{this.SalesPerson}}</td>
+                    <td>{{this.date}}</td>
+                    <td>{{this.item}}</td>
+                    <td>{{this.quantity}}</td>
+                    <td>{{this.totalNetValue}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        {{else}}
+        <p>No items found</p>
+        {{/if}}
+        <p id="sumcontainer">
+            <b>&nbsp Sum total<span class="tab3">{{total}}</span> </p>
+
+
+    </div>
+
+    {{>footer}}
+
+
+    </body>
+
+</html>
