@@ -1,0 +1,201 @@
+body {
+    color: #FFF8DC;
+    font-family: arial;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat
+}
+
+input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 12px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    /*-webkit-transition: width 0.4s ease-in-out;*/
+    /*transition: width 0.4s ease-in-out;*/
+}
+textarea {
+    width:100%;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 2rem;
+}
+datalist {
+    width: 200px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 12px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.priceContainer {
+    color: aliceblue;
+    font-size: 100px;
+    width: 100px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: rgb(105, 99, 99);
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 5px 10px 5px 10px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.focus {
+    background-color: #ff00ff;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.pageNumber {
+    padding: 2px;
+}
+
+/*input[type=text]:focus {*/
+/*    width: 50%;*/
+/*}*/
+
+datalist:focus {
+    width: 100%;
+}
+
+input[type=number] {
+    width: 80px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 12px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.main-content {
+    flex-grow: initial;
+}
+
+footer {
+    color: #F0E68C;
+    border-top: 1px solid #eeeeee;
+    margin-top: 16px;
+    padding: 16px 0;
+}
+
+header {
+    margin-top: 16px;
+    margin-bottom: 48px;
+    color: #FFD700;
+}
+
+h1 {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+#symbol {
+    font-size: 30px;
+    margin-bottom: 100px;
+}
+
+header a {
+    color: #DAA520;
+    margin-right: 16px;
+    text-decoration: none;
+}
+
+.portrait {
+    width: 250px;
+}
+
+input {
+    border: 1px solid #cccccc;
+    padding: 8px;
+}
+.formfield * {
+    vertical-align: middle;
+}
+.submit {
+    position: relative;
+}
+
+.quantity {
+    position: relative;
+    left: 20px
+}
+
+.tab {
+    display: inline-block;
+    margin-left: 45px;
+}
+
+.tab2 {
+    display: inline-block;
+    margin-left: 55px;
+}
+
+.tab3 {
+    display: inline-block;
+    margin-left: 525px;
+}
+
+button {
+    /* cursor: pointer;
+    border: 1px solid #888888;
+    background: #888888;
+    color: white;
+    padding: 8px; */
+    /* float: right; */
+    width: 20%;
+    padding: 10px;
+    background: green;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049
+}
+
+#intro {
+    color: #F5FFFA
+}
+
+#foo {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: #FFD700;
+    font-weight: bold;
+}
+
+#message-1,
+#message-2 {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: #FFF8DC;
+    font-weight: bold;
+}

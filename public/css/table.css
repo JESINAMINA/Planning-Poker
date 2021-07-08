@@ -1,0 +1,24 @@
+#keywords{
+color: black;
+
+    cursor: pointer;
+    background: #f4f774;
+    width :100%
+}
+
+#keywords thead tr th.headerSortUp, #keywords thead tr th.headerSortDown {
+    background: #eef770;
+  }
+
+  tr:nth-child(even) {
+    background-color: #d9eea8;
+  }
+
+  th{
+    background-color: #f0c244;  
+  }
+  #sumcontainer{
+    width :100%;
+    background-color: #f0c244; ;
+    padding: 10px 0;
+}
