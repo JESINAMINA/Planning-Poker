@@ -1,5 +1,5 @@
 module.exports = {
-  mongoURI: 'mongodb://jesin:jesinki2maza@cluster0-shard-00-00.gsms9.mongodb.net:27017,cluster0-shard-00-01.gsms9.mongodb.net:27017,cluster0-shard-00-02.gsms9.mongodb.net:27017/Vote?ssl=true&replicaSet=atlas-f2r75u-shard-0&authSource=admin&retryWrites=true&w=majority',
+  mongoURI: 'mongodb://jesin:jesinki2maza@cluster0-shard-00-00.gsms9.mongodb.net:27017,cluster0-shard-00-01.gsms9.mongodb.net:27017,cluster0-shard-00-02.gsms9.mongodb.net:27017/Planner?ssl=true&replicaSet=atlas-f2r75u-shard-0&authSource=admin&retryWrites=true&w=majority',
   pusherAppId: '1232531',
   pusherKey: '7d90cde296e0f41003bb',
   pusherSecret: 'e994ca09b2f66a840220',

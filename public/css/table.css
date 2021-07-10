@@ -1,4 +1,4 @@
-#keywords{
+#stories{
 color: black;
 
     cursor: pointer;
@@ -6,16 +6,18 @@ color: black;
     width :100%
 }
 
-#keywords thead tr th.headerSortUp, #keywords thead tr th.headerSortDown {
+#stories thead tr th.headerSortUp, #stories thead tr th.headerSortDown {
     background: #eef770;
   }
-
+tr {
+  text-align:left
+}
   tr:nth-child(even) {
     background-color: #d9eea8;
   }
 
   th{
-    background-color: #f0c244;  
+    background-color: #f0c244;
   }
   #sumcontainer{
     width :100%;

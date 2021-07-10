@@ -2,13 +2,17 @@ const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 const cors = require('cors')
+const mongoose = require('mongoose');
 require('../config/db');
+const Story = require('../models/Story');
 const poll = require('./routes/poll');
+const post = require('./routes/post');
 const app = express()
+const storyService = require('./services/storyService')
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
-
+const Vote = require('../models/Vote');
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -19,7 +23,9 @@ const partialsPath = path.join(__dirname, '../templates/partials')
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
-
+hbs.registerHelper('json', function(context) {
+  return JSON.stringify(context);
+});
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
 
@@ -30,19 +36,32 @@ app.get('', (req, res) => {
   })
 })
 app.get('/list', async(req, res) => {
-  res.render('list', {
-    title: 'Stories',
-    name: 'Jesin',
-    list: [],
-    total:0
-  })
+  Story.find({}).then(stories => {
+    res.render('list', {
+      title: 'Stories',
+      name: 'Jesin',
+      list: stories,
+    })
+  });
+
 
 })
 // Enable CORS
 app.use(cors());
 
 app.use('/poll', poll);
+app.use('/post', post);
 
+app.get('/story', (req, res) => {
+  Story.find({_id:req.query.id}).then(story => {
+        res.render('vote', {
+          title: 'Vote',
+          name: 'Jesin',
+          story: story[0],
+        })
+      }
+  );
+});
 app.get('/help', (req, res) => {
   res.render('help', {
     helpText: 'This is some helpful text.',

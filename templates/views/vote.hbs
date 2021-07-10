@@ -8,7 +8,6 @@
   <link rel="icon" href="/img/pokericon.png">
 {{!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> --}}
   <link rel="stylesheet" href="./css/styles.css">
-   <link rel="stylesheet" href="./css/table.css">
   <title>PlanningPoker</title>
   <style>.hidden { display: none; }</style>
 </head>
@@ -17,29 +16,36 @@
 {{!--   <div class="container"> --}}
     <div class="main-content">
         {{>header}}
-        {{#if list.length}}
-        <table id="stories">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Author</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each list}}
-                <tr onclick=display({{{json this._id}}})>
-                    <td>{{this.title}}</td>
-                    <td>{{this.description}}</td>
-                    <td>{{this.author}}</td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
+    <div class = "story-container">
+    <span class="story-title">{{story.title}}</span>
+    <div class="story-desc">{{story.description}}</div>
+    </div>
+    <div id="hasVotedAlreadyErrorMsg" class="card-panel hidden" style="width: 30%">
+      <span class="red-text text-darken-2">You have already voted, you can only vote once.</span>
+    </div>
+    <form id="vote-form">
+      <p>
+            <input type="radio" name="os" id="windows" value="Windows">
+            <label for="windows">Windows</label>
+      <p>
+            <input type="radio" name="os" id="macos" value="MacOS">
+            <label for="macos">MacOS</label>
+      <p>
+            <input type="radio" name="os" id="linux" value="Linux">
+            <label for="linux">Linux Distro</label>
+      </p>
+      <p>
+            <input type="radio" name="os" id="other" value="Other">
+            <label for="other">Something else</label>
+      </p>
+      <input type="submit" value="Vote" class="submit">
+    </form>
 
-        {{else}}
-        <p>No items found</p>
-        {{/if}}
+    <br>
+    <br>
+
+    <h5 style="text-align: center" id="chartTitle"></h5>
+    <div id="chartContainer" style="height: 300px;width:100%"></div>
   </div>
     {{>footer}}
   <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>

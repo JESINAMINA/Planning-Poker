@@ -199,3 +199,19 @@ button:hover {
     color: #FFF8DC;
     font-weight: bold;
 }
+.story-container{
+    width: 100%;
+    background-color: #eadb87;
+    color: black;
+    border-style: solid;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+.story-desc {
+    margin-top: 0.4rem;
+    font-size: 15px;
+    font-style: oblique;
+}
+.story-title{
+  font-weight : 600
+}
