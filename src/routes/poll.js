@@ -17,24 +17,23 @@ var pusher = new Pusher({
 
 
 router.get('/', (req, res) => {
-  Vote.find({_id:req.query.id}).then(votes => {
+  Vote.find({story_id:req.query.storyId}).then(votes => {
         res.json({ success: true, votes: votes })
       });
 });
 router.post('/', (req, res) => {
+
   const newVote = {
-    story:"test",
-    user: "test_user",
+    story_id:req.body.storyId,
+    user: req.body.userId,
     estimate: req.body.os,
     points: 1
   };
-
   new Vote(newVote).save().then(vote => {
     pusher.trigger('os-poll', 'os-vote', {
       points: parseInt(vote.points),
       os: vote.estimate
     });
-
     return res.json({ success: true, message: 'Thank you for voting' });
   });
 });

@@ -42,10 +42,12 @@ if (storySubmitForm) {
 
 if (form) {
   form.addEventListener('submit', e => {
-
     const choice = document.querySelector('input[name=os]:checked').value;
-    const data = {os: choice};
-
+    const data = {
+      os: choice,
+      storyId: storyId,
+      userId: user
+    };
     fetch('http://localhost:3000/poll', {
       method: 'post',
       body: JSON.stringify(data),
@@ -58,7 +60,7 @@ if (form) {
     e.preventDefault();
   });
 
-  fetch("http://localhost:3000/poll")
+  fetch("http://localhost:3000/poll?storyId=" + storyId)
   .then(res => res.json())
   .then(data => {
     let votes = data.votes;
@@ -80,16 +82,15 @@ if (form) {
     );
 
     let dataPoints = [
-      {label: 'Windows', y: voteCounts.Windows},
-      {label: 'MacOS', y: voteCounts.MacOS},
-      {label: 'Linux', y: voteCounts.Linux},
-      {label: 'Other', y: voteCounts.Other}
+      {label: 'Windows', y: voteCounts.Windows || 0},
+      {label: 'MacOS', y: voteCounts.MacOS || 0},
+      {label: 'Linux', y: voteCounts.Linux || 0},
+      {label: 'Other', y: voteCounts.Other || 0}
     ];
 
     const chartContainer = document.querySelector('#chartContainer');
 
     if (chartContainer) {
-
       // Listen for the event.
       document.addEventListener('votesAdded', function (e) {
         document.querySelector(
@@ -110,14 +111,12 @@ if (form) {
 
       // Enable pusher logging - don't include this in production
       Pusher.logToConsole = true;
-
       var pusher = new Pusher('7d90cde296e0f41003bb', {
         cluster: 'eu',
         encrypted: true
       });
 
       var channel = pusher.subscribe('os-poll');
-
       channel.bind('os-vote', function (data) {
         dataPoints.forEach((point) => {
           if (point.label == data.os) {
@@ -130,7 +129,7 @@ if (form) {
           }
         });
         chart.render();
-      });
+      })
     }
 
   });
