@@ -55,8 +55,9 @@ app.use('/post', post);
 app.get('/story', (req, res) => {
   Story.find({_id:req.query.id}).then(story => {
         res.render('vote', {
-          title: 'Vote',
+          title: 'Poll',
           name: 'Jesin',
+          estimates:['0',"1/2",'1','2','3','5','8','13'],
           story: story[0],
         })
       }

@@ -161,20 +161,18 @@ input {
     display: inline-block;
     margin-left: 525px;
 }
-
+.vote{
+    margin-top:1rem ;
+    width:50%
+}
 button {
-    /* cursor: pointer;
-    border: 1px solid #888888;
-    background: #888888;
-    color: white;
-    padding: 8px; */
-    /* float: right; */
     width: 20%;
     padding: 10px;
     background: green;
     color: white;
     font-size: 17px;
     border: 1px solid grey;
+    border-radius:0.3rem;
     border-left: none;
     cursor: pointer;
 }
@@ -206,6 +204,7 @@ button:hover {
     border-style: solid;
     border-radius: 0.5rem;
     padding: 0.5rem;
+    margin-bottom: 2rem;
 }
 .story-desc {
     margin-top: 0.4rem;
@@ -214,4 +213,18 @@ button:hover {
 }
 .story-title{
   font-weight : 600
+}
+.estimates {
+    background-color: #f5cf70;
+    color: black;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-right: 2rem;
+}
+.estimates:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+.estimate-list{
+    margin-top:1rem
 }

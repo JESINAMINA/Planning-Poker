@@ -1,6 +1,6 @@
 #stories{
 color: black;
-
+border-radius:0.2rem;
     cursor: pointer;
     background: #f4f774;
     width :100%
@@ -9,6 +9,9 @@ color: black;
 #stories thead tr th.headerSortUp, #stories thead tr th.headerSortDown {
     background: #eef770;
   }
+td {
+  padding: 0.5rem;
+}
 tr {
   text-align:left
 }
@@ -23,4 +26,12 @@ tr {
     width :100%;
     background-color: #f0c244; ;
     padding: 10px 0;
+}
+  table{
+    margin-top:0.5rem
+  }
+.help-text {
+  font-size: 0.9rem;
+  /* font-style: italic; */
+  margin-bottom: 1rem;
 }

@@ -24,26 +24,37 @@
       <span class="red-text text-darken-2">You have already voted, you can only vote once.</span>
     </div>
     <form id="vote-form">
-      <p>
-            <input type="radio" name="os" id="windows" value="Windows">
-            <label for="windows">Windows</label>
-      <p>
-            <input type="radio" name="os" id="macos" value="MacOS">
-            <label for="macos">MacOS</label>
-      <p>
-            <input type="radio" name="os" id="linux" value="Linux">
-            <label for="linux">Linux Distro</label>
-      </p>
-      <p>
-            <input type="radio" name="os" id="other" value="Other">
-            <label for="other">Something else</label>
-      </p>
-      <input type="submit" value="Vote" class="submit">
+    <div class="estimate-list">
+                {{#each estimates}}
+        <span class="estimates" onclick=vote('{{this}}') >{{this}}</span>
+        {{/each}}
+     </div>
+{{!--             <input type="radio" name="os" id="windows" value="0"> --}}
+{{!--             <label for="windows">0</label> --}}
+
+{{!--             <input type="radio" name="os" id="macos" value="1/2"> --}}
+{{!--             <label for="macos">1/2</label> --}}
+
+{{!--             <input type="radio" name="os" id="linux" value="1"> --}}
+{{!--             <label for="linux">1</label> --}}
+
+{{!--             <input type="radio" name="os" id="other" value="2"> --}}
+{{!--             <label for="other">2</label> --}}
+
+{{!--            <input type="radio" name="os" id="other" value="3"> --}}
+{{!--            <label for="other">3</label> --}}
+
+{{!--             <input type="radio" name="os" id="other" value="5"> --}}
+{{!--             <label for="other">5</label> --}}
+
+{{!--             <input type="radio" name="os" id="other" value="8"> --}}
+{{!--             <label for="other">8</label> --}}
+
+{{!--             <input type="radio" name="os" id="other" value="13"> --}}
+{{!--             <label for="other">13</label> --}}
+
+{{!--             <div class="vote"><button id="vote" class="submit">Vote</button></div> --}}
     </form>
-
-    <br>
-    <br>
-
     <h5 style="text-align: center" id="chartTitle"></h5>
     <div id="chartContainer" style="height: 300px;width:100%"></div>
   </div>

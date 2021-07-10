@@ -18,11 +18,10 @@ function display(id) {
 
 if (storySubmitForm) {
   storySubmitForm.addEventListener('submit', e => {
-
     const title = document.querySelector('input[name=title]').value;
     document.querySelector('input[name=title]').value = ""
     const description = document.querySelector('textarea[name=desc]').value;
-    document.querySelector('textarea[name=desc]').value="";
+    document.querySelector('textarea[name=desc]').value = "";
     const data = {
       author: user,
       title: title,
@@ -35,10 +34,9 @@ if (storySubmitForm) {
       headers: new Headers({
         'Content-Type': 'application/json'
       })
-    }).then(res =>
-      {
-        alert("Story posted sucessfully!")
-      }
+    }).then(res => {
+          alert("Story posted sucessfully!")
+        }
     )
     .catch(err => console.log(err));
 
@@ -47,8 +45,30 @@ if (storySubmitForm) {
 }
 
 if (form) {
-  form.addEventListener('submit', e => {
-    const choice = document.querySelector('input[name=os]:checked').value;
+  // form.addEventListener('submit', e => {
+  //   const choice = document.querySelector('input[name=os]:checked').value;
+  //   const data = {
+  //     os: choice,
+  //     storyId: storyId,
+  //     userId: user
+  //   };
+  //   fetch('http://localhost:3000/poll', {
+  //     method: 'post',
+  //     body: JSON.stringify(data),
+  //     headers: new Headers({
+  //       'Content-Type': 'application/json'
+  //     })
+  //   }).then(res => res.json())
+  //   .catch(err => console.log(err));
+  //:
+  //   e.preventDefault();
+  // });
+  function vote(choice){
+    const estimates = document.getElementsByClassName("estimates")
+    for (estimate of estimates) {
+      estimate.style.backgroundColor = estimate.innerHTML === choice ?  '#c4a65a': '#f5cf70'
+    }
+
     const data = {
       os: choice,
       storyId: storyId,
@@ -62,10 +82,7 @@ if (form) {
       })
     }).then(res => res.json())
     .catch(err => console.log(err));
-
-    e.preventDefault();
-  });
-
+  }
   fetch("http://localhost:3000/poll?storyId=" + storyId)
   .then(res => res.json())
   .then(data => {
@@ -75,10 +92,14 @@ if (form) {
         '#chartTitle').textContent = `Total Votes: ${totalVotes}`;
 
     let voteCounts = {
-      Windows: 0,
-      MacOS: 0,
-      Linux: 0,
-      Other: 0
+      '0': 0,
+      '1/2': 0,
+      '1': 0,
+      '2': 0,
+      '3': 0,
+      '5': 0,
+      '8': 0,
+      '13': 0
     };
 
     voteCounts = votes.reduce((acc, vote) => (
@@ -86,12 +107,15 @@ if (form) {
                 vote.points)), acc),
         {}
     );
-
     let dataPoints = [
-      {label: 'Windows', y: voteCounts.Windows || 0},
-      {label: 'MacOS', y: voteCounts.MacOS || 0},
-      {label: 'Linux', y: voteCounts.Linux || 0},
-      {label: 'Other', y: voteCounts.Other || 0}
+      {label: '0', y: voteCounts['0'] || 0},
+      {label: '1/2', y: voteCounts['1/2'] || 0},
+      {label: '1', y: voteCounts['1'] || 0},
+      {label: '2', y: voteCounts['2'] || 0},
+      {label: '3', y: voteCounts['3'] || 0},
+      {label: '5', y: voteCounts['5'] || 0},
+      {label: '8', y: voteCounts['8'] || 0},
+      {label: '13', y: voteCounts['13'] || 0}
     ];
 
     const chartContainer = document.querySelector('#chartContainer');
