@@ -20,7 +20,9 @@ if (storySubmitForm) {
   storySubmitForm.addEventListener('submit', e => {
 
     const title = document.querySelector('input[name=title]').value;
+    document.querySelector('input[name=title]').value = ""
     const description = document.querySelector('textarea[name=desc]').value;
+    document.querySelector('textarea[name=desc]').value="";
     const data = {
       author: user,
       title: title,
@@ -33,7 +35,11 @@ if (storySubmitForm) {
       headers: new Headers({
         'Content-Type': 'application/json'
       })
-    }).then(res => alert(res.json()))
+    }).then(res =>
+      {
+        alert("Story posted sucessfully!")
+      }
+    )
     .catch(err => console.log(err));
 
     e.preventDefault();
@@ -122,6 +128,14 @@ if (form) {
           if (point.label == data.os) {
             point.y += data.points;
             totalVotes += data.points;
+            event = new CustomEvent('votesAdded',
+                {detail: {totalVotes: totalVotes}});
+            // Dispatch the event.
+            document.dispatchEvent(event);
+          }
+          if (point.label == data.removed) {
+            point.y -= data.points;
+            totalVotes -= data.points;
             event = new CustomEvent('votesAdded',
                 {detail: {totalVotes: totalVotes}});
             // Dispatch the event.
