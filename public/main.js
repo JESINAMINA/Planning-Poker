@@ -1,16 +1,24 @@
-const form = document.getElementById('vote-form');
+const votingForm = document.getElementById('vote-form');
 const storySubmitForm = document.getElementById('create-poll-form');
+const username = document.getElementById('username');
 var event;
 
 var user = sessionStorage.getItem("user")
-if(!user)
-{fetch("http://localhost:3000/user")
-.then(name => {
-    name.json().then(data=>{
-      user= data.username;
+
+if (!user) {
+  fetch("http://localhost:3000/user")
+  .then(name => {
+    name.json().then(data => {
+      user = data.username;
       sessionStorage.setItem("user", user);
+      if (username) {
+        username.innerHTML = "Welcome" + ' ' + user + '!';
+      }
     })
-})}
+  })
+} else if (username) {
+  username.innerHTML = "Welcome" + ' ' + user + '!';
+}
 
 function display(id) {
   location.assign("http://localhost:3000/story?id=" + id)
@@ -44,14 +52,13 @@ if (storySubmitForm) {
   });
 }
 
-if (form) {
+if (votingForm) {
   function vote(choice) {
     const estimates = document.getElementsByClassName("estimates")
     for (estimate of estimates) {
       estimate.style.backgroundColor = estimate.innerHTML === choice ? '#c4a65a'
           : '#f5cf70'
     }
-
     const data = {
       os: choice,
       storyId: storyId,
@@ -101,7 +108,6 @@ if (form) {
       {label: '8', y: voteCounts['8'] || 0},
       {label: '13', y: voteCounts['13'] || 0}
     ];
-
     const chartContainer = document.querySelector('#chartContainer');
 
     if (chartContainer) {
@@ -113,7 +119,7 @@ if (form) {
 
       const chart = new CanvasJS.Chart('chartContainer', {
         animationEnabled: true,
-        theme: 'theme1',
+        theme: 'dark1',
         data: [
           {
             type: 'column',
@@ -130,8 +136,8 @@ if (form) {
         encrypted: true
       });
 
-      var channel = pusher.subscribe('os-poll');
-      channel.bind('os-vote', function (data) {
+      var channel = pusher.subscribe('planning-poll');
+      channel.bind('estimate-vote', function (data) {
         dataPoints.forEach((point) => {
           if (point.label == data.os) {
             point.y += data.points;

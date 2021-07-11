@@ -13,13 +13,11 @@
 
 <body background="./img/Poker.png">
     <div class="main-content">
+        <div id="username"></div>
         {{>header}}
     <div class = "story-container">
     <span class="story-title">{{story.title}}</span>
     <div class="story-desc">{{story.description}}</div>
-    </div>
-    <div id="hasVotedAlreadyErrorMsg" class="card-panel hidden" style="width: 30%">
-      <span class="red-text text-darken-2">You have already voted, you can only vote once.</span>
     </div>
     <form id="vote-form">
     <div class="estimate-list">

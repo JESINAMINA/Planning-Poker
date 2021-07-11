@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
       points: 1
     };
     new Vote(newVote).save().then(vote => {
-      pusher.trigger('os-poll', 'os-vote', {
+      pusher.trigger('planning-poll', 'estimate-vote', {
         points: parseInt(vote.points),
         os: vote.estimate,
         removed: removed
