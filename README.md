@@ -16,7 +16,9 @@ How to run this project?
 Download the project and open in suitable IDE
 In the root folder, run the following commands
 
+
 npm install
+
 npm run dev
 
 open http://localhost:3000/
