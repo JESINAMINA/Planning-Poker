@@ -14,6 +14,7 @@ Visualize the results in real-time of a poll: Anyone should be able to see the r
 How to run this project?
 
 Download the project and open in suitable IDE
+
 In the root folder, run the following commands
 
 
