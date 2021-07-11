@@ -18,7 +18,7 @@ const Vote = require('../models/Vote');
 const publicDirectoryPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
-
+var username
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
@@ -29,6 +29,14 @@ hbs.registerHelper('json', function(context) {
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
 
+app.get('/user', (req, res) => {
+  var a = ["Kevin", "John", "Aby"];
+  var b = ["Kenny", "Mathew", "Antony"];
+  var rA = Math.floor(Math.random() * a.length);
+  var rB = Math.floor(Math.random() * b.length);
+  var username = a[rA] + ' ' + b[rB] + '_' +Math.floor(Math.random() * 90 + 10);
+  res.send({username})
+})
 app.get('', (req, res) => {
   res.render('index', {
     title: 'Planning Poker',

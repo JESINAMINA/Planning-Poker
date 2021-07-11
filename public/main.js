@@ -1,16 +1,16 @@
 const form = document.getElementById('vote-form');
 const storySubmitForm = document.getElementById('create-poll-form');
 var event;
-var a = ["Kevin", "John", "Aby"];
-var b = ["Kenny", "Mathew", "Antony"];
-var rA = Math.floor(Math.random() * a.length);
-var rB = Math.floor(Math.random() * b.length);
-var name = a[rA] + ' ' + b[rB];
+
 var user = sessionStorage.getItem("user")
-if (!user) {
-  user = name
-  sessionStorage.setItem("user", name);
-}
+if(!user)
+{fetch("http://localhost:3000/user")
+.then(name => {
+    name.json().then(data=>{
+      user= data.username;
+      sessionStorage.setItem("user", user);
+    })
+})}
 
 function display(id) {
   location.assign("http://localhost:3000/story?id=" + id)
@@ -45,28 +45,11 @@ if (storySubmitForm) {
 }
 
 if (form) {
-  // form.addEventListener('submit', e => {
-  //   const choice = document.querySelector('input[name=os]:checked').value;
-  //   const data = {
-  //     os: choice,
-  //     storyId: storyId,
-  //     userId: user
-  //   };
-  //   fetch('http://localhost:3000/poll', {
-  //     method: 'post',
-  //     body: JSON.stringify(data),
-  //     headers: new Headers({
-  //       'Content-Type': 'application/json'
-  //     })
-  //   }).then(res => res.json())
-  //   .catch(err => console.log(err));
-  //:
-  //   e.preventDefault();
-  // });
-  function vote(choice){
+  function vote(choice) {
     const estimates = document.getElementsByClassName("estimates")
     for (estimate of estimates) {
-      estimate.style.backgroundColor = estimate.innerHTML === choice ?  '#c4a65a': '#f5cf70'
+      estimate.style.backgroundColor = estimate.innerHTML === choice ? '#c4a65a'
+          : '#f5cf70'
     }
 
     const data = {
@@ -83,6 +66,7 @@ if (form) {
     }).then(res => res.json())
     .catch(err => console.log(err));
   }
+
   fetch("http://localhost:3000/poll?storyId=" + storyId)
   .then(res => res.json())
   .then(data => {

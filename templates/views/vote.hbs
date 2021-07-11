@@ -6,14 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="/img/pokericon.png">
-{{!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> --}}
   <link rel="stylesheet" href="./css/styles.css">
   <title>PlanningPoker</title>
   <style>.hidden { display: none; }</style>
 </head>
 
 <body background="./img/Poker.png">
-{{!--   <div class="container"> --}}
     <div class="main-content">
         {{>header}}
     <div class = "story-container">
@@ -29,31 +27,6 @@
         <span class="estimates" onclick=vote('{{this}}') >{{this}}</span>
         {{/each}}
      </div>
-{{!--             <input type="radio" name="os" id="windows" value="0"> --}}
-{{!--             <label for="windows">0</label> --}}
-
-{{!--             <input type="radio" name="os" id="macos" value="1/2"> --}}
-{{!--             <label for="macos">1/2</label> --}}
-
-{{!--             <input type="radio" name="os" id="linux" value="1"> --}}
-{{!--             <label for="linux">1</label> --}}
-
-{{!--             <input type="radio" name="os" id="other" value="2"> --}}
-{{!--             <label for="other">2</label> --}}
-
-{{!--            <input type="radio" name="os" id="other" value="3"> --}}
-{{!--            <label for="other">3</label> --}}
-
-{{!--             <input type="radio" name="os" id="other" value="5"> --}}
-{{!--             <label for="other">5</label> --}}
-
-{{!--             <input type="radio" name="os" id="other" value="8"> --}}
-{{!--             <label for="other">8</label> --}}
-
-{{!--             <input type="radio" name="os" id="other" value="13"> --}}
-{{!--             <label for="other">13</label> --}}
-
-{{!--             <div class="vote"><button id="vote" class="submit">Vote</button></div> --}}
     </form>
     <h5 style="text-align: center" id="chartTitle"></h5>
     <div id="chartContainer" style="height: 300px;width:100%"></div>
